@@ -42,8 +42,8 @@ export function AppHeader() {
       <div className="md:hidden">
         <SidebarTrigger />
       </div>
-      <div className="hidden md:block font-headline text-lg font-semibold">
-        Jannu Live
+      <div className="hidden md:block">
+        <JannuLiveLogo />
       </div>
       <div className="flex w-full items-center gap-4 md:ml-auto md:gap-2 lg:gap-4">
         <form className="ml-auto flex-1 sm:flex-initial">
