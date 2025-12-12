@@ -34,14 +34,14 @@ export default function PostCard({ post }: PostCardProps) {
   };
 
   return (
-    <Card className="overflow-hidden border border-accent/20 shadow-lg shadow-accent/10">
+    <Card className="overflow-hidden bg-card border-primary/20 shadow-lg shadow-primary/10">
       <CardHeader className="flex flex-row items-center gap-4 p-4">
-        <Avatar>
+        <Avatar className="border-2 border-primary shadow-lg shadow-primary/50">
           <AvatarImage src={post.author.avatar.imageUrl} alt={post.author.name} data-ai-hint={post.author.avatar.imageHint}/>
           <AvatarFallback>{post.author.name.charAt(0)}</AvatarFallback>
         </Avatar>
         <div className="flex-1">
-          <p className="font-semibold">{post.author.name}</p>
+          <p className="font-semibold text-primary-foreground">{post.author.name}</p>
           <p className="text-sm text-muted-foreground">@{post.author.username} · {post.timestamp}</p>
         </div>
         <Button variant="ghost" size="icon">
@@ -56,7 +56,7 @@ export default function PostCard({ post }: PostCardProps) {
           </div>
         )}
         {post.video && (
-           <div className="relative aspect-[9/16] w-full max-w-sm mx-auto overflow-hidden rounded-lg border border-accent/30 shadow-inner shadow-accent/20">
+           <div className="relative aspect-[9/16] w-full max-w-sm mx-auto overflow-hidden rounded-lg border border-primary/30 shadow-inner shadow-primary/20">
             <Image src={post.video.imageUrl} alt={post.video.description} fill className="object-cover" data-ai-hint={post.video.imageHint} />
              <div className="absolute inset-0 flex items-center justify-center bg-black/40">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 text-white/80" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z" /></svg>
@@ -68,7 +68,7 @@ export default function PostCard({ post }: PostCardProps) {
         <div className="flex gap-2">
             <Button variant="ghost" size="sm" onClick={handleLike} className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
                 <Heart className={cn('h-5 w-5', isLiked ? 'text-primary fill-primary' : '')} />
-                <span className={cn(isLiked ? 'text-primary font-bold' : '')}>{likeCount}</span>
+                <span className={cn('font-bold', isLiked ? 'text-primary' : 'text-muted-foreground')}>{likeCount}</span>
             </Button>
             <Button variant="ghost" size="sm" onClick={handleSecretLike} className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
                 <HeartOff className={cn('h-5 w-5', isSecretlyLiked ? 'text-primary/70' : '')} />

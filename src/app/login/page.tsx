@@ -13,26 +13,45 @@ import { Bot } from 'lucide-react';
 
 export default function LoginPage() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-100 dark:bg-gray-950 p-4">
-      <Card className="mx-auto max-w-sm w-full">
+    <div className="flex min-h-screen items-center justify-center bg-background p-4">
+       <div 
+        className="absolute inset-0 -z-10"
+        style={{
+            background: 'linear-gradient(45deg, hsl(var(--primary)/0.2), hsl(var(--chart-2)/0.2), hsl(var(--chart-3)/0.2))',
+            filter: 'blur(40px)',
+            opacity: 0.4
+        }}
+       />
+      <Card 
+        className="mx-auto max-w-sm w-full bg-card/80 backdrop-blur-sm border-primary/20 shadow-2xl shadow-primary/10"
+      >
         <CardHeader className="text-center">
             <div className="flex justify-center items-center gap-2 mb-4">
-                <Bot className="h-8 w-8 text-primary" />
-                <CardTitle className="text-3xl font-headline">Jannu Live</CardTitle>
+                <Bot
+                    className="h-8 w-8 text-primary"
+                    style={{ filter: 'drop-shadow(0 0 8px hsl(var(--primary)))' }}
+                />
+                <CardTitle 
+                    className="text-3xl font-headline"
+                    style={{ textShadow: '0 0 10px hsl(var(--primary)), 0 0 20px hsl(var(--primary))' }}
+                >
+                    Jannu Live
+                </CardTitle>
             </div>
-          <CardDescription>
-            Enter your email below to login to your account
+          <CardDescription className="text-muted-foreground">
+            Join the neon streaming community
           </CardDescription>
         </CardHeader>
         <CardContent>
           <div className="grid gap-4">
             <div className="grid gap-2">
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor="email" className="text-muted-foreground">Email</Label>
               <Input
                 id="email"
                 type="email"
                 placeholder="m@example.com"
                 required
+                className="bg-secondary/50 border-primary/20 focus:border-primary focus:shadow-lg focus:shadow-primary/50"
               />
             </div>
             <div className="grid gap-2">
@@ -40,23 +59,23 @@ export default function LoginPage() {
                 <Label htmlFor="password">Password</Label>
                 <Link
                   href="#"
-                  className="ml-auto inline-block text-sm underline text-accent"
+                  className="ml-auto inline-block text-sm underline text-primary"
                 >
                   Forgot your password?
                 </Link>
               </div>
-              <Input id="password" type="password" required />
+              <Input id="password" type="password" required className="bg-secondary/50 border-primary/20 focus:border-primary focus:shadow-lg focus:shadow-primary/50" />
             </div>
-            <Button type="submit" className="w-full bg-accent hover:bg-accent/90">
+            <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold shadow-lg shadow-primary/30">
               Login
             </Button>
-            <Button variant="outline" className="w-full">
+            <Button variant="outline" className="w-full border-primary/50 text-muted-foreground hover:bg-primary/10 hover:text-primary">
               Login with Google
             </Button>
           </div>
           <div className="mt-4 text-center text-sm">
             Don&apos;t have an account?{' '}
-            <Link href="/signup" className="underline text-accent">
+            <Link href="/signup" className="underline text-primary">
               Sign up
             </Link>
           </div>

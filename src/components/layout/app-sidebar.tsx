@@ -35,10 +35,20 @@ import { useTheme } from 'next-themes';
 import React from 'react';
 
 const JannuLiveLogo = () => (
-  <div className="flex items-center gap-2 p-2">
-    <Bot className="text-primary w-8 h-8" />
-    <h1 className="text-xl font-headline font-bold text-foreground">Jannu Live</h1>
-  </div>
+    <div className="flex items-center gap-2 p-2">
+        <Bot
+            className="text-primary w-8 h-8"
+            style={{
+                filter: 'drop-shadow(0 0 8px hsl(var(--primary)))',
+            }}
+        />
+        <h1
+            className="text-xl font-headline font-bold text-foreground"
+            style={{
+                textShadow: '0 0 10px hsl(var(--primary)), 0 0 20px hsl(var(--primary))',
+            }}
+        >Jannu Live</h1>
+    </div>
 );
 
 export function AppSidebar() {
@@ -116,7 +126,7 @@ export function AppSidebar() {
       <SidebarFooter className="border-t border-sidebar-border">
          <div className="flex items-center justify-between p-2">
            <div className="flex items-center gap-3">
-            <Avatar className="h-10 w-10">
+            <Avatar className="h-10 w-10 border-2 border-primary/50">
               <AvatarImage src={currentUser.avatar.imageUrl} alt={currentUser.name} data-ai-hint={currentUser.avatar.imageHint} />
               <AvatarFallback>{currentUser.name.charAt(0)}</AvatarFallback>
             </Avatar>

@@ -1,6 +1,6 @@
 'use client';
 
-import { Search, Bell, Sun, Moon } from 'lucide-react';
+import { Search, Bell, Sun, Moon, Bot } from 'lucide-react';
 import { SidebarTrigger } from '@/components/ui/sidebar';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -18,27 +18,25 @@ import Link from 'next/link';
 
 const JannuLiveLogo = () => (
     <div className="flex items-center gap-2">
-        <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="h-6 w-6 text-primary"
-        >
-            <path d="M10.02 6.02c.8-.8 2.05-.8 2.85 0l4.03 4.03c.8.8.8 2.05 0 2.85l-4.03 4.03c-.8.8-2.05.8-2.85 0l-4.03-4.03c-.8-.8-.8-2.05 0-2.85l4.03-4.03z" />
-            <path d="M12 12h.01" />
-        </svg>
-        <h1 className="text-xl font-headline font-bold">Jannu Live</h1>
+        <Bot
+            className="h-8 w-8 text-primary"
+            style={{
+                filter: 'drop-shadow(0 0 8px hsl(var(--primary)))',
+            }}
+        />
+        <h1 
+            className="text-xl font-headline font-bold"
+            style={{
+                textShadow: '0 0 10px hsl(var(--primary)), 0 0 20px hsl(var(--primary))',
+            }}
+        >Jannu Live</h1>
     </div>
 );
 
 
 export function AppHeader() {
   return (
-    <header className="sticky top-0 z-10 flex h-16 items-center gap-4 border-b bg-background/80 backdrop-blur-sm px-4 md:px-6">
+    <header className="sticky top-0 z-10 flex h-16 shrink-0 items-center gap-4 border-b border-border/50 bg-background/80 px-4 backdrop-blur-sm md:px-6">
       <div className="md:hidden">
         <SidebarTrigger />
       </div>
@@ -52,18 +50,18 @@ export function AppHeader() {
             <Input
               type="search"
               placeholder="Search..."
-              className="pl-8 sm:w-[300px] md:w-[200px] lg:w-[300px] bg-card"
+              className="pl-8 sm:w-[300px] md:w-[200px] lg:w-[300px] bg-card focus:border-primary focus:shadow-lg focus:shadow-primary/50"
             />
           </div>
         </form>
-        <Button variant="ghost" size="icon" className="rounded-full">
+        <Button variant="ghost" size="icon" className="rounded-full text-muted-foreground hover:text-primary hover:bg-secondary">
           <Bell className="h-5 w-5" />
           <span className="sr-only">Toggle notifications</span>
         </Button>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" size="icon" className="rounded-full">
-              <Avatar className="h-8 w-8">
+              <Avatar className="h-8 w-8 border-2 border-primary/50 hover:border-primary transition-colors">
                  <AvatarImage src={currentUser.avatar.imageUrl} alt={currentUser.name} data-ai-hint={currentUser.avatar.imageHint} />
                  <AvatarFallback>{currentUser.name.charAt(0)}</AvatarFallback>
               </Avatar>
