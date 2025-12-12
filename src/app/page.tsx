@@ -1,3 +1,4 @@
+import React from 'react';
 import { MainLayout } from '@/components/layout/main-layout';
 import CreatePost from '@/components/features/post/create-post';
 import PostCard from '@/components/features/post/post-card';
@@ -15,10 +16,10 @@ export default function HomePage() {
         <CreatePost />
         <div className="space-y-4">
           {posts.map((post, index) => (
-            <>
-              <PostCard key={post.id} post={post} />
+            <React.Fragment key={post.id}>
+              <PostCard post={post} />
               {index === 1 && adBannerImage && <AdBanner adImage={adBannerImage} />}
-            </>
+            </React.Fragment>
           ))}
         </div>
       </div>
