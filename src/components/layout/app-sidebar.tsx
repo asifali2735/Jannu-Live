@@ -10,7 +10,7 @@ import {
   Users,
   Video,
   Wallet,
-  Bot,
+  Heart,
   LogOut,
   Sun,
   Moon,
@@ -36,7 +36,7 @@ import React from 'react';
 
 const JannuLiveLogo = () => (
     <div className="flex items-center gap-2 p-2">
-        <Bot
+        <Heart
             className="text-primary w-8 h-8"
             style={{
                 filter: 'drop-shadow(0 0 8px hsl(var(--primary)))',

@@ -9,7 +9,7 @@ import {
 } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Bot } from 'lucide-react';
+import { Heart } from 'lucide-react';
 
 export default function LoginPage() {
   return (
@@ -27,7 +27,7 @@ export default function LoginPage() {
       >
         <CardHeader className="text-center">
             <div className="flex justify-center items-center gap-2 mb-4">
-                <Bot
+                <Heart
                     className="h-8 w-8 text-primary"
                     style={{ filter: 'drop-shadow(0 0 8px hsl(var(--primary)))' }}
                 />

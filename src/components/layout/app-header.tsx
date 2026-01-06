@@ -1,6 +1,6 @@
 'use client';
 
-import { Search, Bell, Sun, Moon, Bot } from 'lucide-react';
+import { Search, Bell, Sun, Moon, Heart } from 'lucide-react';
 import { SidebarTrigger } from '@/components/ui/sidebar';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -18,7 +18,7 @@ import Link from 'next/link';
 
 const JannuLiveLogo = () => (
     <div className="flex items-center gap-2">
-        <Bot
+        <Heart
             className="h-8 w-8 text-primary"
             style={{
                 filter: 'drop-shadow(0 0 8px hsl(var(--primary)))',
