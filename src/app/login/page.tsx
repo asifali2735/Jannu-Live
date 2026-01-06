@@ -1,29 +1,26 @@
 'use client';
 
-import Link from 'next/link';
-import { Button } from '@/components/ui/button';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { HeartBeatIcon } from '@/components/icons/heart-beat-icon';
 import { useState } from 'react';
 import { useAuth, initiateEmailSignIn } from '@/firebase';
 import { useRouter } from 'next/navigation';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import Link from 'next/link';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [message, setMessage] = useState('');
   const auth = useAuth();
   const router = useRouter();
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
+     if (!email || !password) {
+      setMessage('Please enter both email and password.');
+      return;
+    }
     initiateEmailSignIn(auth, email, password);
     router.push('/');
   };
@@ -38,76 +35,48 @@ export default function LoginPage() {
             opacity: 0.4
         }}
        />
-      <Card 
-        className="mx-auto max-w-sm w-full bg-card/80 backdrop-blur-sm border-primary/20 shadow-2xl shadow-primary/10"
-      >
-        <CardHeader className="text-center">
-            <div className="flex justify-center items-center gap-2 mb-4">
-                <HeartBeatIcon
-                    className="h-8 w-8 text-primary"
-                    style={{ filter: 'drop-shadow(0 0 8px hsl(var(--primary)))' }}
-                />
-                <CardTitle 
-                    className="text-3xl font-headline"
-                    style={{ textShadow: '0 0 10px hsl(var(--primary)), 0 0 20px hsl(var(--primary))' }}
-                >
-                    Jannu Live
-                </CardTitle>
-            </div>
-          <CardDescription className="text-muted-foreground">
-            Join the neon streaming community
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <form onSubmit={handleLogin}>
-            <div className="grid gap-4">
-              <div className="grid gap-2">
-                <Label htmlFor="email" className="text-muted-foreground">Email</Label>
-                <Input
-                  id="email"
-                  type="email"
-                  placeholder="m@example.com"
-                  required
-                  className="bg-secondary/50 border-primary/20 focus:border-primary focus:shadow-lg focus:shadow-primary/50"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </div>
-              <div className="grid gap-2">
-                <div className="flex items-center">
-                  <Label htmlFor="password">Password</Label>
-                  <Link
-                    href="#"
-                    className="ml-auto inline-block text-sm underline text-primary"
-                  >
-                    Forgot your password?
-                  </Link>
-                </div>
-                <Input 
-                  id="password" 
-                  type="password" 
-                  required 
-                  className="bg-secondary/50 border-primary/20 focus:border-primary focus:shadow-lg focus:shadow-primary/50"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </div>
-              <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold shadow-lg shadow-primary/30">
-                Login
-              </Button>
-              <Button variant="outline" className="w-full border-primary/50 text-muted-foreground hover:bg-primary/10 hover:text-primary">
-                Login with Google
-              </Button>
-            </div>
-          </form>
-          <div className="mt-4 text-center text-sm">
-            Don&apos;t have an account?{' '}
-            <Link href="/signup" className="underline text-primary">
-              Sign up
-            </Link>
+      <div className="w-full max-w-sm p-8 space-y-6 bg-card/80 backdrop-blur-sm border border-primary/20 rounded-lg shadow-2xl shadow-primary/10">
+        <div className="text-center">
+          <h1 className="text-3xl font-headline text-primary" style={{ textShadow: '0 0 10px hsl(var(--primary)), 0 0 20px hsl(var(--primary))' }}>Jannu Live</h1>
+          <p className="text-muted-foreground mt-2">Welcome back!</p>
+        </div>
+        <form onSubmit={handleLogin} className="space-y-4">
+           <div>
+            <Label htmlFor="email" className="text-muted-foreground">Email</Label>
+            <Input
+              id="email"
+              type="email"
+              placeholder="you@example.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              className="mt-1 bg-secondary/50 border-primary/20 focus:border-primary focus:shadow-lg focus:shadow-primary/50"
+            />
           </div>
-        </CardContent>
-      </Card>
+          <div>
+            <Label htmlFor="password">Password</Label>
+            <Input
+              id="password"
+              type="password"
+              placeholder="••••••••"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              className="mt-1 bg-secondary/50 border-primary/20 focus:border-primary focus:shadow-lg focus:shadow-primary/50"
+            />
+          </div>
+          <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold shadow-lg shadow-primary/30">
+            Log In
+          </Button>
+        </form>
+         {message && <p className="text-center text-destructive">{message}</p>}
+        <div className="text-center text-sm text-muted-foreground">
+          Don't have an account?{' '}
+          <Link href="/signup" className="underline text-primary hover:text-primary/80">
+            Sign Up
+          </Link>
+        </div>
+      </div>
     </div>
   );
 }
