@@ -1,8 +1,9 @@
 export const firebaseConfig = {
-  "projectId": "studio-823879354-94e42",
-  "appId": "1:885728082064:web:ca6f8f5daa31ab8ebe8015",
-  "apiKey": "AIzaSyAF8Xtyb9fDgcP6rAmubcNhUAD1M9thtZQ",
-  "authDomain": "studio-823879354-94e42.firebaseapp.com",
-  "measurementId": "",
-  "messagingSenderId": "885728082064"
+  apiKey: "AIzaSyCoEHuUbjD5lQh1YsdhtF0CdZ4BzcF9ZF4",
+  authDomain: "jannu-live001.firebaseapp.com",
+  projectId: "jannu-live001",
+  storageBucket: "jannu-live001.firebasestorage.app",
+  messagingSenderId: "432039192606",
+  appId: "1:432039192606:web:2f47f160055fde99fd660f",
+  measurementId: "G-W4J0JD0PY7"
 };
