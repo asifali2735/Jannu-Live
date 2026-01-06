@@ -17,6 +17,7 @@ import { useAuth, initiateEmailSignUp } from '@/firebase';
 import { useRouter } from 'next/navigation';
 
 export default function SignupPage() {
+  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const auth = useAuth();
@@ -61,9 +62,16 @@ export default function SignupPage() {
         <CardContent>
           <form onSubmit={handleSignup}>
             <div className="grid gap-4">
-              <div className="grid gap-2">
-                  <Label htmlFor="full-name" className="text-muted-foreground">Full name</Label>
-                  <Input id="full-name" placeholder="John Doe" required className="bg-secondary/50 border-primary/20 focus:border-primary focus:shadow-lg focus:shadow-primary/50" />
+               <div className="grid gap-2">
+                  <Label htmlFor="username" className="text-muted-foreground">Username</Label>
+                  <Input 
+                    id="username" 
+                    placeholder="Choose a username" 
+                    required 
+                    className="bg-secondary/50 border-primary/20 focus:border-primary focus:shadow-lg focus:shadow-primary/50"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                  />
               </div>
               <div className="grid gap-2">
                 <Label htmlFor="email" className="text-muted-foreground">Email</Label>
